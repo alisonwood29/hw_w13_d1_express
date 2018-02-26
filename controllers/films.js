@@ -18,9 +18,15 @@ filmRouter.get('/', function (req, res) {
 
 
 filmRouter.post('/', function(req, res) {
+  // const review1 = new Review({
+  //   comment: req.body.comment,
+  //   rating: req.body.rating,
+  //   author: req.body.author
+  // })
   const film = new Film({
     title: req.body.title,
-    actors: req.body.actors
+    actors: req.body.actors,
+    reviews: req.body.reviews
   });
   films.push(film);
   res.json({data: films});
