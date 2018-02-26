@@ -13,7 +13,28 @@ filmRouter.get('/:id', function (req, res) {
 
 // INDEX
 filmRouter.get('/', function (req, res) {
-  res.json(films);
+  res.json({data: films});
 })
+
+
+filmRouter.post('/', function(req, res) {
+  const film = new Film({
+    title: req.body.title,
+    actors: req.body.actors
+  });
+  films.push(film);
+  res.json({data: films});
+});
+
+filmRouter.put('/:id', function (req, res) {
+  films[req.params.id] = {
+    title: req.body.title,
+    actors: req.body.actors,
+    reviews: req.body.reviews
+  }
+  res.json({data: films});
+})
+
+
 
 module.exports = filmRouter;
